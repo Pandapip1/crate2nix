@@ -303,7 +303,15 @@ rec {
                   else self.crates.${depPackageId};
                 dependencies =
                   (crateConfig.dependencies or [ ])
-                  ++ devDependencies;
+                  ++ devDependencies ++ (with pkgs; [
+                    gtk4
+                    glib
+                    libadwaita
+                    webkitgtk_6_0
+                    gst_all_1.gst-plugins-base
+                    gst_all_1.gst-plugins-good
+                    gst_all_1.gst-plugins-bad
+                  ]);
               };
             buildDependencies =
               dependencyDerivations {
